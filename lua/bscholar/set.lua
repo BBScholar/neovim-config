@@ -42,24 +42,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
         vim.highlight.on_yank {higroup = "IncSearch", timeout = 150 }
     end,
 })
-
--- linenumber toggle logic
-local toggle_group = vim.api.nvim_create_augroup("number_toggle", {})
-vim.api.nvim_create_autocmd("InsertEnter", {
-    group = toggle_group,
-    desc = "Toggles between relative and absolute line numbers automatically",
-    pattern = "*",
-    callback = function()
-        vim.opt.relativenumber = false
-    end,
-})
-
-vim.api.nvim_create_autocmd("InsertLeave", {
-    group = toggle_group,
-    pattern = "*",
-    callback = function()
-        vim.opt.relativenumber = true
-    end,
-})
-
--- vim.api.nvim_create_autocmd()

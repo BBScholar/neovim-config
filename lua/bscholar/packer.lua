@@ -5,7 +5,7 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = { { 'nvim-lua/plenary.nvim' }} 
+	  'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = { { 'nvim-lua/plenary.nvim' }}
   }
 
   use({
@@ -43,12 +43,34 @@ return require('packer').startup(function(use)
 	    {'rafamadriz/friendly-snippets'}, -- Optional
 	  }
 	}
+    -- file tree
+    use {
+      'nvim-tree/nvim-tree.lua',
+      requires = {
+        'nvim-tree/nvim-web-devicons', -- optional, for file icons
+      },
+    }
+    -- tabs for each file
+    use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
 
-use {
-  'nvim-tree/nvim-tree.lua',
-  requires = {
-    'nvim-tree/nvim-web-devicons', -- optional, for file icons
-  },
-}
+    -- scrollbar 
+    use("petertriho/nvim-scrollbar")
+
+    -- auto brackets
+    use("windwp/nvim-autopairs")
+
+    -- auto commenting
+    use('numToStr/Comment.nvim')
+
+    -- status line via lua-line
+    use {
+      'nvim-lualine/lualine.nvim',
+      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
+
+    -- floating terminal
+    use "numToStr/FTerm.nvim"
+
+
 
 end)
